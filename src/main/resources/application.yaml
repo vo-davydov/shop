@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/master.xml

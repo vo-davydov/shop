@@ -28,6 +28,10 @@ public class Product extends AbstractEntity {
     inverseJoinColumns = @JoinColumn(name = "category_id"))
   private Collection<Category> categories;
 
+  public Product() {
+
+  }
+
   public String getTitle() {
     return title;
   }

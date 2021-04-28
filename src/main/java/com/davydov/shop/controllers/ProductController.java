@@ -33,6 +33,7 @@ public class ProductController {
   @PostMapping
   public Product createNewProduct(@RequestBody Product product) {
     product.setId(null);
+
     return productService.save(product);
   }
 

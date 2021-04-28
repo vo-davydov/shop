@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sys_roles")
 public class Role extends AbstractEntity {
-  @Column(name = "role_type")
+  @Column(name = "role")
   private RoleType roleType;
 
   public Role(RoleType roleType) {

@@ -3,6 +3,7 @@ package com.davydov.shop.controllers;
 import java.util.List;
 import com.davydov.shop.dto.ProductDto;
 import com.davydov.shop.entity.Product;
+import com.davydov.shop.entity.ProductStatus;
 import com.davydov.shop.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,10 +32,8 @@ public class ProductController {
   }
 
   @PostMapping
-  public Product createNewProduct(@RequestBody Product product) {
-    product.setId(null);
-
-    return productService.save(product);
+  public Product createNewProduct(@RequestBody ProductDto productDto) {
+    return productService.save(productDto);
   }
 
   @PutMapping

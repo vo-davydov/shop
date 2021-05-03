@@ -45,14 +45,12 @@ CREATE TABLE IF NOT EXISTS sys_address
         FOREIGN KEY (user_id) REFERENCES sys_user (id)
 );
 
-CREATE TYPE products_status AS ENUM ('out_of_stock', 'in_stock', 'running_low');
-
 CREATE TABLE IF NOT EXISTS sys_product
 (
     id          SERIAL PRIMARY KEY,
     title       VARCHAR(128),
     price       NUMERIC,
-    status      products_status,
+    status      VARCHAR(128),
     create_date TIMESTAMP,
     update_date TIMESTAMP
 );

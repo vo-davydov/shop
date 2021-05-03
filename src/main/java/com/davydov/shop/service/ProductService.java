@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import com.davydov.shop.dto.ProductDto;
 import com.davydov.shop.entity.Product;
+import com.davydov.shop.entity.ProductStatus;
+import com.davydov.shop.errors.EmptyProductException;
 import com.davydov.shop.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,7 +32,24 @@ public class ProductService {
     return productRepository.save(product);
   }
 
+  public Product save(ProductDto productDto) {
+    Product product = new Product();
+    product.setId(0L);
+    product.setPrice(productDto.getPrice());
+    product.setTitle(productDto.getTitle());
+    product.setStatus(ProductStatus.valueOf(productDto.getStatus()));
+    return productRepository.save(product);
+  }
+
   public void deleteById(Long id) {
     productRepository.deleteById(id);
+  }
+
+  private ProductStatus getProductStatus(ProductDto productDto) {
+    if (productDto == null) {
+      throw new EmptyProductException("There should not be empty product");
+    }
+
+    return ProductStatus.valueOf(productDto.getStatus());
   }
 }

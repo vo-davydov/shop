@@ -1,6 +1,6 @@
 package com.davydov.shop.errors;
 
-public class EmptyUserException extends RuntimeException{
+public class EmptyUserException extends RuntimeException {
   public EmptyUserException() {
     super();
   }

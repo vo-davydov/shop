@@ -7,11 +7,24 @@ public class ProductDto {
   private Long id;
   private String title;
   private BigDecimal price;
+  private String status;
+
+  public ProductDto() {
+
+  }
 
   public ProductDto(Product product) {
     this.id = product.getId();
     this.title = product.getTitle();
     this.price = product.getPrice();
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   public Long getId() {

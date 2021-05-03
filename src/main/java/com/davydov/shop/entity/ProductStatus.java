@@ -1,5 +1,8 @@
 package com.davydov.shop.entity;
 
+import javax.persistence.Enumerated;
+import static javax.persistence.EnumType.STRING;
+
 public enum ProductStatus {
 
   OUT_OF_STOCK("out_of_stock"),
@@ -12,6 +15,7 @@ public enum ProductStatus {
     this.status = status;
   }
 
+  @Enumerated(STRING)
   public String getStatus() {
     return status;
   }

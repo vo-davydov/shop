@@ -3,7 +3,6 @@ package com.davydov.shop.beans;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.davydov.shop.entity.Product;
 import org.springframework.stereotype.Component;
 
 @Component

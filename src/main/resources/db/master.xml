@@ -6,4 +6,6 @@
 
     <include file="classpath:db/changelog/1_create_main_shop_schema.sql"
              relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelog/2_insert_roles.sql"
+             relativeToChangelogFile="false"/>
 </databaseChangeLog>

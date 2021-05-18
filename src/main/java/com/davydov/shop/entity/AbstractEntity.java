@@ -2,6 +2,7 @@ package com.davydov.shop.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
@@ -12,24 +13,24 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @MappedSuperclass
 public class AbstractEntity implements Serializable {
-  private Long id;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
-  private LocalDateTime created;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
-  private LocalDateTime updated;
 
   @Id
-  @GeneratedValue
-  public Long getId() {
-    return id;
-  }
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+  @Column(name = "create_date", updatable = false)
+  private LocalDateTime created;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+  @Column(name = "update_date", insertable = false)
+  private LocalDateTime updated;
 
-  @Column(name = "created", updatable = false)
+
   public LocalDateTime getCreated() {
     return created;
   }
 
-  @Column(name = "updated", insertable = false)
+
   public LocalDateTime getUpdated() {
     return updated;
   }
@@ -57,6 +58,10 @@ public class AbstractEntity implements Serializable {
   public AbstractEntity(LocalDateTime created, LocalDateTime updated) {
     this.created = created;
     this.updated = updated;
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public void setId(Long id) {
